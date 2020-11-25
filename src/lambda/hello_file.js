@@ -10,7 +10,7 @@ exports.handler = (event, context, callback) => {
       statusCode: 200, 
       headers: {
         'Content-type': 'application/octet-stream',
-        'Content-Disposition': 'attachment; filename=' + fileName),
+        'Content-Disposition': 'attachment; filename=' + fileName,
       }, 
       body: body.toString('base64'),
       isBase64Encoded: true
