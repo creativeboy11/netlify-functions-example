@@ -2,9 +2,9 @@ import fetch from "node-fetch";
 
 exports.handler = (event, context, callback) => {
 
-  const { fileURL } = event.queryStringParameters;
-  const fileName = fileURL.split('/').pop();
-  fetch(fileURL)
+  const { fileUrl } = event.queryStringParameters;
+  const fileName = fileUrl.split('/').pop();
+  fetch(fileUrl)
     .then(result => result.buffer())
     .then(body => callback(null, { 
       statusCode: 200, 
