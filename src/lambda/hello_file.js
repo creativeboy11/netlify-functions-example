@@ -1,10 +1,10 @@
-const fetch = require('isomorphic-fetch')
+import fetch from "node-fetch";
 
 exports.handler = (event, context, callback) => {
 
   const { fileURL } = event.queryStringParameters
 
-  fetch(fileURL, { headers })
+  fetch(fileURL)
     .then(result => result.buffer())
     .then(body => callback(null, { 
       statusCode: 200, 
