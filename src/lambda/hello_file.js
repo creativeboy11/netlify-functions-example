@@ -9,7 +9,7 @@ exports.handler = (event, context, callback) => {
     .then(body => callback(null, { 
       statusCode: 200, 
       headers: {
-        "Content-type": "image/jpeg"
+        "Content-type": "application/msword"
       }, 
       body: body.toString('base64'),
       isBase64Encoded: true
