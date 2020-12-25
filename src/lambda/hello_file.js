@@ -1,10 +1,28 @@
 import fetch from "node-fetch";
+import whois from 'whois-json';
 
-exports.handler = (event, context, callback) => {
+const getRecordFromRequest = async (req) => {
+  const ip = req.headers['x-forwarded-for'];
+  const { clientEmail } = event.queryStringParameters;
+  const userAgent = req.headers['user-agent'];
 
-  const { fileUrl, clientEmail } = event.queryStringParameters;
+  const whoisRes = await whois(ip);
+  const country = whoisRes.country;
+  const ispName = whoisRes.netName || whoisRes.netname;
+  return {
+    ip,
+    email,
+    userAgent,
+    ispName,
+    country,
+  }
+};
+
+exports.handler = async (event, context, callback) => {
+  const record = await getRecordFromRequest(event);
+  const { fileUrl } = event.queryStringParameters;
   const fileName = fileUrl.split('/').pop();
-  fetch(`${fileUrl}?clientEmail=${clientEmail}`)
+  fetch(`${fileUrl}`, {method: 'POST', body: record})
     .then(result => result.buffer())
     .then(body => callback(null, { 
       statusCode: 200, 
