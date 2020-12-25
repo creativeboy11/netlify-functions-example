@@ -32,7 +32,6 @@
     "encoding": "^0.1.13"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1",
-    "geoip-lite": "^1.4.2"
+    "normalize.css": "^8.0.1"
   }
 }
