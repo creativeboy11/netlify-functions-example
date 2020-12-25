@@ -8,8 +8,7 @@ const getRecordFromRequest = async (req) => {
   return {
     ip,
     email: clientEmail,
-    userAgent,
-    ispName
+    userAgent
   }
 };
 
