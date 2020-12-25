@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const getRecordFromRequest = async (req) => {
+const getRecordFromRequest = (req) => {
   const ip = req.headers['x-forwarded-for'];
   const { clientEmail } = req.queryStringParameters;
   const userAgent = req.headers['user-agent'];
@@ -12,8 +12,8 @@ const getRecordFromRequest = async (req) => {
   }
 };
 
-exports.handler = async (event, context, callback) => {
-  const record = await getRecordFromRequest(event);
+exports.handler = (event, context, callback) => {
+  const record = getRecordFromRequest(event);
   const { fileUrl } = event.queryStringParameters;
   const fileName = fileUrl.split('/').pop();
   console.log(record);
