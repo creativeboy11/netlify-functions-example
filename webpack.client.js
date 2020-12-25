@@ -9,6 +9,14 @@ module.exports = {
     filename: "main.js",
     path: path.resolve("dist/client")
   },
+  module: {
+  rules: [
+    {
+        test: /node_modules[/\\]jsonstream/i,
+      loader: 'shebang-loader'
+    }
+  ]
+},
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html"
