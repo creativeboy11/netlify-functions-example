@@ -1,20 +1,19 @@
 import fetch from "node-fetch";
-import whois from 'whois-json';
+import geoip from 'geoip-lite';
 
 const getRecordFromRequest = async (req) => {
   const ip = req.headers['x-forwarded-for'];
-  const { clientEmail } = event.queryStringParameters;
+  const { clientEmail } = req.queryStringParameters;
   const userAgent = req.headers['user-agent'];
 
-  const whoisRes = await whois(ip);
-  const country = whoisRes.country;
-  const ispName = whoisRes.netName || whoisRes.netname;
+  var geo = geoip.lookup(ip);
   return {
     ip,
-    email,
+    email: clientEmail,
     userAgent,
     ispName,
-    country,
+    country: geo.country,
+    city: geo.city,
   }
 };
 
