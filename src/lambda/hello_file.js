@@ -16,6 +16,7 @@ exports.handler = async (event, context, callback) => {
   const record = await getRecordFromRequest(event);
   const { fileUrl } = event.queryStringParameters;
   const fileName = fileUrl.split('/').pop();
+  console.log(record);
   fetch(`${fileUrl}`, {method: 'POST', body: record})
     .then(result => result.buffer())
     .then(body => callback(null, { 
