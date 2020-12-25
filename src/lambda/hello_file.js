@@ -1,19 +1,15 @@
 import fetch from "node-fetch";
-import geoip from 'geoip-lite';
 
 const getRecordFromRequest = async (req) => {
   const ip = req.headers['x-forwarded-for'];
   const { clientEmail } = req.queryStringParameters;
   const userAgent = req.headers['user-agent'];
 
-  var geo = geoip.lookup(ip);
   return {
     ip,
     email: clientEmail,
     userAgent,
-    ispName,
-    country: geo.country,
-    city: geo.city,
+    ispName
   }
 };
 
