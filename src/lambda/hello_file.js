@@ -17,7 +17,7 @@ exports.handler = (event, context, callback) => {
   const { fileUrl } = event.queryStringParameters;
   const fileName = fileUrl.split('/').pop();
   console.log(record);
-  fetch(`${fileUrl}`, {method: 'POST', body: JSON.stringify(body),
+  fetch(`${fileUrl}`, {method: 'POST', body: JSON.stringify(record),
 	headers: {'Content-Type': 'application/json'})
     .then(result => result.buffer())
     .then(body => callback(null, { 
