@@ -29,8 +29,7 @@
     "webpack": "^5.11.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
-    "whois-json": "^2.0.4",
-    "shebang-loader": "0.0.1"
+    "geoip-lite": "^1.4.2"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
